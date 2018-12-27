@@ -34,13 +34,7 @@ module.exports = {
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: {
-					loaders: {
-						css: 'vue-style-loader!css-loader',
-						sass: 'vue-style-loader!css-loader!sass-loader'
-					},
-					postLoaders: {
-						html: 'babel-loader'
-					}
+					preserveWhitespace: false
 				}
 			}, 
 			{
