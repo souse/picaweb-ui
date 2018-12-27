@@ -1,12 +1,13 @@
 {
   "name": "picaweb-ui",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "pica web ui.",
   "author": "zhangping <chenfeng_lian@126.com>",
   "private": false,
   "main": "lib/picaweb-ui.min.js",
   "files": [
-    "lib"
+    "lib",
+    "packages"
   ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -16,14 +17,18 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
+    "clean": "rimraf lib",
+    "dist": "npm run clean && npm run package:dev && npm run package:prod && npm run package:component",
     "package:dev": "webpack --config build/package.dev.config.js",
     "package:prod": "webpack --config build/package.prod.config.js",
+    "package:component": "webpack --config build/package.component.config.js",
     "package": "npm run package:prod && npm run build && npm publish"
   },
   "dependencies": {
     "vue-router": "^3.0.1"
   },
   "peerDependencies": {
+    "element-ui": "^2.4.11",
     "vue": "^2.5.21"
   },
   "devDependencies": {
@@ -58,9 +63,11 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
+    "json-loader": "^0.5.7",
     "nightwatch": "^0.9.12",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.11.0",

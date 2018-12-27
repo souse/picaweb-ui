@@ -4,7 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'picaweb-ui': './src/components/index.js'
+		'picaweb-ui': './packages/index.js'
 	},
 	output: {
 		path: path.resolve(__dirname, '../lib'),
@@ -22,7 +22,11 @@ module.exports = {
 		}
 	},
 	resolve: {
-		extensions: ['.js', '.vue']
+		extensions: ['.js', '.vue'],
+		alias: {
+			main: path.resolve(__dirname, '../src'),
+  		packages: path.resolve(__dirname, '../packages')
+		}
 	},
 	module: {
 		loaders: [

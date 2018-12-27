@@ -5,7 +5,6 @@ const baseWebpackConfig = require('./package.config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractScss = new ExtractTextPlugin('/picaweb-ui.min.css')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(baseWebpackConfig, {
   output: {
@@ -53,12 +52,6 @@ module.exports = merge(baseWebpackConfig, {
         {
           safe: true
         }
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: `./src/components`,
-        to: `./components`
-      }
-    ]),
+    })
   ]
 });

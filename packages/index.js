@@ -1,7 +1,7 @@
-import './style/index.scss'
+import 'packages/style/index.scss'
 
-import Button from './button'
-import ButtonGroup from './button-group'
+import Button from 'packages/button'
+import ButtonGroup from 'packages/button-group'
 
 const components = [
 	Button,
@@ -19,7 +19,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 	install(window.Vue)
 }
 
-/**
+
 export default {
 	version: '1.0.0',
 	install,
@@ -27,8 +27,8 @@ export default {
 	Button,
 	ButtonGroup
 }
-**/
 
+/**
 module.exports = {
 	version: '1.0.0',
 	install,
@@ -38,3 +38,4 @@ module.exports = {
 }
 
 module.exports.default = module.exports;
+**/
