@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "pica web ui",
   "author": "zhangping <chenfeng_lian@126.com>",
+  "private": false,
   "main": "lib/picaweb-ui.min.js",
   "files": [
     "lib"
