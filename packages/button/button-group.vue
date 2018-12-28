@@ -9,7 +9,3 @@ export default {
 	name: 'pica-button-group'
 }
 </script>
-
-<style scoped lang="scss">
-	
-</style>
