@@ -6,6 +6,6 @@
 
 <script>
 export default {
-	name: 'pica-button-group'
+	name: 'PicaButtonGroup'
 }
 </script>

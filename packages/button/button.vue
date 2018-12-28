@@ -8,7 +8,7 @@
 
 <script>
 export default {
-	name: 'pica-button',
+	name: 'PicaButton',
 	methods: {
 		handleClick(event) {
 			if (this.disabled) return;
