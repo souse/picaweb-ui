@@ -9,9 +9,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, '../lib'),
 		publicPath: '/dist/',
-		library: 'picaweb-ui',
-		libraryTarget: 'umd',
-		umdNamedDefine: true
+		chunkFilename: '[id].js'
 	},
 	externals: {
 		vue: {

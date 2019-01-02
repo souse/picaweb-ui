@@ -6,7 +6,8 @@ const extractScss = new ExtractTextPlugin('/picaweb-ui.css')
 
 module.exports = merge(baseWebpackConfig, {
   output: {
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: 'commonjs2'
   },
   module: {
     loaders: [

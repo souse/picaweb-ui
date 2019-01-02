@@ -3,12 +3,15 @@ const merge = require('webpack-merge')
 const config = require('../config')
 const baseWebpackConfig = require('./package.config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractScss = new ExtractTextPlugin('/picaweb-ui.min.css')
+const extractScss = new ExtractTextPlugin('/index.css')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
   output: {
-    filename: '[name].min.js'
+    filename: 'index.js',
+    library: 'picaweb-ui',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     loaders: [

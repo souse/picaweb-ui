@@ -1,4 +1,4 @@
-import 'packages/style/index.scss'
+import 'packages/theme-style/index.scss'
 
 import Button from 'packages/button'
 import ButtonGroup from 'packages/button-group'

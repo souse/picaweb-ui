@@ -4,7 +4,7 @@
   "description": "pica web ui.",
   "author": "zhangping <chenfeng_lian@126.com>",
   "private": false,
-  "main": "lib/picaweb-ui.min.js",
+  "main": "lib/picaweb-ui.js",
   "files": [
     "lib",
     "packages"
@@ -18,20 +18,31 @@
     "lint": "eslint --ext .js,.vue src packages",
     "build": "node build/build.js",
     "clean": "rimraf lib",
-    "dist": "npm run clean && npm run package:dev && npm run package:prod && npm run package:component",
+    "package:theme": "node config/handle-cssfile && gulp build --gulpfile build/gulpfile.js",
     "package:dev": "webpack --config build/package.dev.config.js",
     "package:prod": "webpack --config build/package.prod.config.js",
     "package:component": "webpack --config build/package.component.config.js",
-    "package": "npm run package:prod && npm run build && npm publish"
+    "dist": "npm run clean && npm run package:theme && npm run package:dev && npm run package:prod && npm run package:component"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:souse/pica-web-ui.git"
   },
+  "keywords": [
+    "picaweb",
+    "vue",
+    "components"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/souse/pica-web-ui/issues"
+  },
+  "unpkg": "lib/index.js",
+  "style": "lib/theme-style/index.css",
   "dependencies": {},
   "peerDependencies": {
     "element-ui": "^2.4.11",
-    "vue": "^2.5.21"
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -51,8 +62,10 @@
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",
+    "cp-cli": "^1.1.2",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
+    "element-ui": "^2.4.11",
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-standard": "^10.2.1",
@@ -67,6 +80,12 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-flatten": "^0.4.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.0.4",
@@ -92,7 +111,7 @@
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
-    "vue": "^2.5.21",
+    "vue": "^2.5.2",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
     "vue-router": "^3.0.1",
