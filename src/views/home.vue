@@ -1,6 +1,11 @@
 <template>
 	<div class="home-container">
-		hhh
+		<h2>Pica Web UI</h2>
+		<pica-button>点击</pica-button>
+		<pica-button-group>
+			<pica-button>点击</pica-button>
+			<pica-button>点击</pica-button>	
+		</pica-button-group>
 	</div>
 </template>
 
