@@ -1,8 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const Components = require('../components.json');
+
+let externals = {};
+
+Object.keys(Components).forEach(function(key) {
+  externals[`picaweb-ui/packages/${key}`] = `picaweb-ui/lib/${key}`;
+});
+
+externals = [Object.assign({
+  vue: 'vue'
+}, externals), nodeExternals()];
 
 module.exports = {
 	entry: Components,
@@ -13,19 +24,13 @@ module.exports = {
     chunkFilename: '[id].js',
     libraryTarget: 'commonjs2'
 	},
-	externals: {
-		vue: {
-			root: 'Vue',
-			commonjs: 'vue',
-			commonjs2: 'vue',
-			amd: 'vue'
-		}
-	},
+	externals,
 	resolve: {
-		extensions: ['.js', '.vue'],
+		extensions: ['.js', '.vue', '.json'],
 		alias: {
 			main: path.resolve(__dirname, '../src'),
-  		packages: path.resolve(__dirname, '../packages')
+  		packages: path.resolve(__dirname, '../packages'),
+  		'picaweb-ui': path.resolve(__dirname, '../')
 		},
 		modules: ['node_modules']
 	},
@@ -38,11 +43,6 @@ module.exports = {
           preserveWhitespace: false
         }
       }, 
-			{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/
-			}, 
 			{
         test: /\.json$/,
         loader: 'json-loader'
