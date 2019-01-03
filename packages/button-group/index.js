@@ -1,7 +1,7 @@
-import ButtonGroup from '../button/button-group'
+import PicaButtonGroup from '../button/button-group'
 
-ButtonGroup.install = function(Vue) {
-	Vue.component(ButtonGroup.name, ButtonGroup)
+PicaButtonGroup.install = function(Vue) {
+	Vue.component(PicaButtonGroup.name, PicaButtonGroup)
 }
 
-export default ButtonGroup;
+export default PicaButtonGroup;

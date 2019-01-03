@@ -1,7 +1,7 @@
-import Button from './button'
+import PicaButton from './button'
 
-Button.install = function(Vue) {
-	Vue.component(Button.name, Button)
+PicaButton.install = function(Vue) {
+	Vue.component(PicaButton.name, PicaButton)
 }
 
-export default Button
+export default PicaButton

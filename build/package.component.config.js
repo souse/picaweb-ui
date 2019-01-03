@@ -36,6 +36,11 @@ module.exports = {
 	},
 	module: {
 		loaders: [
+       {
+        test: /\.(jsx?|babel|es6)$/,
+        include: process.cwd(),
+        loader: 'babel-loader'
+      },
 			{
         test: /\.vue$/,
         loader: 'vue-loader',
