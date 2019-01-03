@@ -1,10 +1,10 @@
 {
   "name": "picaweb-ui",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "pica web ui.",
   "author": "zhangping <chenfeng_lian@126.com>",
   "private": false,
-  "main": "lib/picaweb-ui.js",
+  "main": "lib/picaweb-ui.common.js",
   "files": [
     "lib",
     "packages"
@@ -19,10 +19,10 @@
     "build": "node build/build.js",
     "clean": "rimraf lib",
     "package:theme": "node config/handle-cssfile && gulp build --gulpfile build/gulpfile.js",
-    "package:dev": "webpack --config build/package.dev.config.js",
+    "package:common": "webpack --config build/package.common.js",
     "package:prod": "webpack --config build/package.prod.config.js",
-    "package:component": "webpack --config build/package.component.config.js",
-    "dist": "npm run clean && npm run package:theme && npm run package:dev && npm run package:prod && npm run package:component"
+    "package:component": "webpack --config build/package.component.js",
+    "dist": "npm run clean && npm run package:theme && npm run package:common && npm run package:prod && npm run package:component"
   },
   "repository": {
     "type": "git",

@@ -2,30 +2,23 @@ const path = require('path');
 const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+const config = require('./config');
+
 module.exports = {
 	entry: {
-		'picaweb-ui': './packages/index.js'
+		app: ['./packages/index.js']
 	},
 	output: {
 		path: path.resolve(__dirname, '../lib'),
 		publicPath: '/dist/',
 		chunkFilename: '[id].js'
 	},
-	externals: {
-		vue: {
-			root: 'Vue',
-			commonjs: 'vue',
-			commonjs2: 'vue',
-			amd: 'vue'
-		}
-	},
 	resolve: {
-		extensions: ['.js', '.vue'],
-		alias: {
-			main: path.resolve(__dirname, '../src'),
-  		packages: path.resolve(__dirname, '../packages')
-		}
-	},
+    extensions: ['.js', '.vue', '.json'],
+    alias: config.alias,
+    modules: ['node_modules']
+  },
+  externals: config.externals,
 	module: {
 		loaders: [
 			{
@@ -41,22 +34,29 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.css$/,
-				use: [
-					'style-loader',
-					'css-loader',
-					'autoprefixer-loader'
-				]
-			}, 
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
 			{
 				test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-				loader: 'url-loader?limit=8192'
+				loader: 'url-loader',
+				query: {
+          limit: 10000,
+          name: path.posix.join('static', '[name].[hash:7].[ext]')
+        }
 			}
 		]
 	},
 	plugins: [
 		new ProgressBarPlugin(),
-		new webpack.optimize.ModuleConcatenationPlugin(),
+		// new webpack.optimize.ModuleConcatenationPlugin(),
+		new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
 		new webpack.LoaderOptionsPlugin({
       minimize: true
     })

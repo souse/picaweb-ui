@@ -1,32 +1,24 @@
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const config = require('../config')
-const baseWebpackConfig = require('./package.config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractScss = new ExtractTextPlugin('/index.css')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+
+const baseWebpackConfig = require('./package.config');
+const config = require('./config');
 
 module.exports = merge(baseWebpackConfig, {
   output: {
     filename: 'index.js',
-    library: 'picaweb-ui',
+    library: 'PICAWEBUI',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  module: {
-    loaders: [
-      {
-        test: /\.scss$/i,
-        loader: extractScss.extract(['css-loader', 'sass-loader'])
-      }
-    ]
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: config.alias
+  },
+  externals: {
+    vue: config.vue
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
     new webpack.optimize.UglifyJsPlugin({
       uglifyOptions: {
         ie8: false,
@@ -42,19 +34,6 @@ module.exports = merge(baseWebpackConfig, {
           drop_console: true
         }
       }
-    }),
-    extractScss,
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: config.build.productionSourceMap ?
-        {
-          safe: true,
-          map: {
-            inline: false
-          }
-        } :
-        {
-          safe: true
-        }
     })
   ]
 });
