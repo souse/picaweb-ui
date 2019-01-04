@@ -7,7 +7,7 @@ const components = [
 ]
 
 const install = function(Vue) {
-	// if (install.installed) return
+	if (install.installed) return
 	components.forEach(component => {
 		Vue.component(component.name, component)
 	})
@@ -17,20 +17,12 @@ if (typeof window !== 'undefined' && window.Vue) {
 	install(window.Vue)
 }
 
-export default {
+module.exports = {
 	version: '1.0.0',
 	install,
 
 	Button,
-	ButtonGroup
+	ButtonGroup	
 }
 
-// module.exports = {
-// 	version: '1.0.0',
-// 	install,
-
-// 	Button,
-// 	ButtonGroup	
-// }
-
-// module.exports.default = module.exports;
+module.exports.default = module.exports;
