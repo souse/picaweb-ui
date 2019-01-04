@@ -9,7 +9,7 @@ module.exports = {
 		app: ['./packages/index.js']
 	},
 	output: {
-		path: path.resolve(__dirname, '../lib'),
+		path: path.resolve(process.cwd(), './lib'),
 		publicPath: '/dist/',
 		chunkFilename: '[id].js'
 	},

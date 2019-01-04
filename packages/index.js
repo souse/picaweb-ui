@@ -1,5 +1,3 @@
-// import 'packages/theme-style/index.scss'
-
 import Button from 'packages/button'
 import ButtonGroup from 'packages/button-group'
 
@@ -19,7 +17,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 	install(window.Vue)
 }
 
-module.exports = {
+export default {
 	version: '1.0.0',
 	install,
 
@@ -27,4 +25,12 @@ module.exports = {
 	ButtonGroup
 }
 
-module.exports.default = module.exports;
+// module.exports = {
+// 	version: '1.0.0',
+// 	install,
+
+// 	Button,
+// 	ButtonGroup	
+// }
+
+// module.exports.default = module.exports;

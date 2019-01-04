@@ -5,7 +5,7 @@ const Components = require('../components.json');
 let externals = {};
 
 Object.keys(Components).forEach(function(key) {
-  externals[`picaweb-ui/packages/${key}`] = `picaweb-ui/lib/${key}`;
+  externals[`packages/${key}`] = `picaweb-ui/lib/${key}`;
 });
 
 externals = [Object.assign({
